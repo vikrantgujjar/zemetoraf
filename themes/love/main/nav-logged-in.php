@@ -46,7 +46,7 @@
 								
 								<div class="how_credtss">
 									<span><?php echo __( 'Credit' );?></span>&nbsp;&nbsp;
-									<svg xmlns="http://www.w3.org/2000/svg" width="13.658" height="15.175" viewBox="0 0 13.658 15.175"> <path id="Path_5894" data-name="Path 5894" d="M3367.018,4985.622h8.347a.759.759,0,0,0,0-1.518h-6.07a3.793,3.793,0,1,1,0-7.587h1.518V4975h3.035v1.518h3.793v3.035h-8.346a.759.759,0,0,0,0,1.518h6.07a3.793,3.793,0,1,1,0,7.587h-1.518v1.518h-3.035v-1.518h-3.794Z" transform="translate(-3365.5 -4975)" fill="#cc42bd"/> </svg> <span id="credit_amount"><?php
+									<svg xmlns="http://www.w3.org/2000/svg" width="13.658" height="15.175" viewBox="0 0 13.658 15.175"> <path id="Path_5894" data-name="Path 5894" d="M3367.018,4985.622h8.347a.759.759,0,0,0,0-1.518h-6.07a3.793,3.793,0,1,1,0-7.587h1.518V4975h3.035v1.518h3.793v3.035h-8.346a.759.759,0,0,0,0,1.518h6.07a3.793,3.793,0,1,1,0,7.587h-1.518v1.518h-3.035v-1.518h-3.794Z" transform="translate(-3365.5 -4975)" fill="#D21312"/> </svg> <span id="credit_amount"><?php
 													if( isGenderFree($profile->gender) === true ){
 														echo __('Free');
 													}else{

@@ -1,0 +1,201 @@
+<?php
+$allUsersList = $db->get('users');
+$conversationList = $db->where('sender_id', $allUsersList[0]['id'])->join("users u", "c.`receiver_id`=u.id", "LEFT")->get('admin_conversations c',NULL,array('c.*','u.id as activeUserid','u.username as username','u.avater as user_avater','u.first_name as firstName','u.last_name as lastName'));
+$senderUsername = $db->where('id',$allUsersList[0]['id'])->get('users',NULL,array('username'));
+$receiverUsername = $db->where('id',$conversationList[0]['receiver_id'])->get('users',NULL,array('username'));
+
+
+$user_id   = $allUsersList[0]['id'];
+$to_userid = $conversationList[0]['receiver_id'];
+$limit     = (isset($_POST['limit']) && is_numeric($_POST['limit']) && (int) $_POST['limit'] > 0) ? (int) $_POST['limit'] : 20;
+$offset    = (isset($_POST['offset'])) ? (int) $_POST['offset'] : 0;
+$prev      = (isset($_POST['prev'])) ? '<' : '>';
+$db->where("( (`to` = ? and `from` = ?) OR (`to` = ? and `from` = ?) )", Array(
+    $user_id,
+    $to_userid,
+    $to_userid,
+    $user_id
+));
+// $db->where("m.id  " . $prev . ' ' . (int) $offset);
+$db->join("stickers s", "m.sticker=s.id", "LEFT");
+$db->join("users u", "m.`from`=u.id", "LEFT");
+$db->join("users u1", "m.`to`=u1.id", "LEFT");
+$db->orderBy('m.created_at', 'DESC');
+$chat_messages = $db->arrayBuilder()->get('admin_messages m', NULL, array(
+    'm.id',
+    'u.username as from_name',
+    'u.avater as from_avater',
+    'u1.username as to_name',
+    'u1.avater as to_avater',
+    'm.`from`',
+    'm.`to`',
+    'm.text',
+    'm.media',
+    'm.from_delete',
+    'm.to_delete',
+    's.file as sticker',
+    'm.created_at',
+    'm.seen'
+));
+
+usort($chat_messages, "chat_messages_sortFunction");
+foreach ($chat_messages as $key => $value) {
+    $chat_messages[$key]['created_at'] = strtotime($chat_messages[$key]['created_at']);
+    $chat_messages[$key]['from_avater'] = GetMedia($chat_messages[$key]['from_avater']);
+    $chat_messages[$key]['to_avater']   = GetMedia($chat_messages[$key]['to_avater']);
+    $chat_messages[$key]['media']       = GetMedia($chat_messages[$key]['media']);
+    $chat_messages[$key]['sticker']     = GetMedia($chat_messages[$key]['sticker']);
+    if ($value['to'] !== $user_id) {
+        $chat_messages[$key]['type'] = 'sent';
+    } else {
+        $chat_messages[$key]['type'] = 'received';
+    }
+    $chat_messages[$key]['message_type'] = 'text';
+    if( $chat_messages[$key]['text'] !== '' && $chat_messages[$key]['media'] == '' && $chat_messages[$key]['sticker'] == ''){
+        $chat_messages[$key]['message_type'] = 'text';
+    }
+    if( $chat_messages[$key]['text'] == '' && $chat_messages[$key]['media'] !== '' && $chat_messages[$key]['sticker'] == ''){
+        $chat_messages[$key]['message_type'] = 'media';
+    }
+    if( $chat_messages[$key]['text'] == '' && $chat_messages[$key]['media'] == '' && $chat_messages[$key]['sticker'] !== ''){
+        $chat_messages[$key]['message_type'] = 'sticker';
+    }
+}
+?>
+<div class="container-fluid" id="vc_chat_container_admin">
+    <div>
+        <h3>ALL Users Chats</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">All chats</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-body">
+                  <h6 class="card-title">Select User</h6>
+                  <div class="d-flex align-items-center mb-3">
+                      <select name="selectActiveUser" class="form-control show-tick" onchange="chat_convList_refreshFunction()" id="selectActiveUser">
+                        <?php
+                            foreach ($allUsersList as $eachUser) {
+                                echo '<option value="'.$eachUser['id'].'">'.$eachUser['username'].'( '.$eachUser['first_name'].' '. $eachUser['last_name'].' )</option>';
+                            }
+                        ?>
+                        
+                      </select>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+        
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title" id="vc_chat_title">Conversations</h6>
+                    <div class="clearfix"></div>
+                    <div class="row" id="vc_chat_content_wrapper">
+                        <div class="col-lg-3">
+                            <div class="conversationList">
+                                <ul>
+                                    <?php
+                                        foreach ($conversationList as $eachConversation) {
+                                            echo '<li><a href="#" data-conId="" onclick="updateConversation('.$eachConversation['receiver_id'].',event)" data-conId="'.$eachConversation['id'].'" class="vc_conversation '.($eachConversation['username']==$receiverUsername[0]['username'] ? 'active' :'').'"><div class="conversationAvatar" style="display:none"><img src="'.$eachConversation['user_avater'].'" alt=""></div><div class="vc_conversationli">'.$eachConversation['username'].' ( '.$eachConversation['firstName'].' '. $eachConversation['lastName'].' )</div></a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="conversationContent">
+                            <div class="conversationHeader clearfix"><span class="vc_float_left"><?php echo $receiverUsername[0]['username'].'<i><small> says</small></i></span><span class="vc_float_right"> '.$senderUsername[0]['username']; ?><i><small> says</small></i></span></div>
+                                <div class="conversationMessages">
+                                    <?php
+                                        foreach ($chat_messages as $chat_message) {
+                                            echo '<div class="message_wrapper message_'.$chat_message['type'].'"><div class="message_inner clearfix">';
+                                            if($chat_message['message_type'] =='text'){
+                                                echo '<span>'.$chat_message['text'].'</span>';
+                                            }elseif($chat_message['message_type'] =='media'){
+                                                echo '<a class="fancybox userSentImage vc_media" href="#" onclick="fancyBoxImage(event)"><img src="'.$chat_message['media'].'" style="background: #dddddd;" data-src="'.$chat_message['media'].'"></a>';
+                                            }elseif($chat_message['message_type'] =='sticker'){
+
+                                            }else{
+
+                                            }
+                                            echo '<br><span class="vc_message_time">'.get_time_ago($chat_message['created_at']).'</span></div></div>';
+                                        }
+                                    ?>
+                                </div>
+                                <!-- $profile->lastseen_txt = get_time_ago($user->lastseen);
+        $profile->lastseen_date = date('c', $user->lastseen); -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+<script>
+jQuery(document).ready(function($) {
+});
+        
+function chat_convList_refreshFunction(a, b) {
+    let selectActiveUser = $('#selectActiveUser');
+    selectActiveUser.disabled = true;
+    $('#vc_chat_title').html('Loading Conversations for user'+ selectActiveUser.find(":selected").text());
+    
+    // $.post('http://localhost/quickdate/Script/admin_load.php?path=vs_allchats_ajax', {ids: data,type: action_type}, function () {
+    //     if (action_type == 'delete') {
+    //         $.each( data, function( index, value ){
+    //             $('#UserID_' + value).remove();
+    //         });
+    //     }
+    //     else{
+    //         location.reload();
+    //     }
+    //     $('.delete-selected').text('Submit');
+    // });
+
+
+
+    var url = '?path=vs_allchats_ajax';
+    $.post(Wo_Ajax_Requests_File_load() + url, {url:url,ref:selectActiveUser.val(),type:'load'}, function (data) {
+        debugger
+        json_data = JSON.parse($(data).filter('#json-data').val());
+        $('#vc_chat_content_wrapper').html(data);
+        $('#vc_chat_title').html('Conversations');
+    });
+            
+
+}
+
+function fancyBoxImage(e){
+    e.preventDefault();
+}
+
+function updateConversation(conveId, e){
+    e.preventDefault();
+    let selectActiveUser = $('#selectActiveUser');
+    selectActiveUser.disabled = true;
+    $('#vc_chat_title').html('Loading Conversations for user'+ selectActiveUser.find(":selected").text());
+
+    var url = '?path=vs_allchats_ajax';
+    $.post(Wo_Ajax_Requests_File_load() + url, {url:url,ref:selectActiveUser.val(),type:'load',conversation_id:conveId}, function (data) {
+        debugger
+        json_data = JSON.parse($(data).filter('#json-data').val());
+        $('#vc_chat_content_wrapper').html(data);
+        $('#vc_chat_title').html('Conversations');
+    });
+}
+
+
+</script>

@@ -29,6 +29,21 @@ Class Chat extends Aj {
             );
         }
         $file = '';
+
+        // ------------------------------------------------------
+        // save media for admin
+        // ------------------------------------------------------
+        if (!file_exists($_UPLOAD . 'adminChatMed'.$_DS.self::ActiveUser()->id . $_DS . 'chat' . $_DS . date('Y'))) {
+            mkdir($_UPLOAD . 'adminChatMed'.$_DS.self::ActiveUser()->id  . $_DS . 'chat' . $_DS . date('Y'), 0777, true);
+        }
+        if (!file_exists($_UPLOAD .'adminChatMed'.$_DS.self::ActiveUser()->id  . $_DS .  'chat' . $_DS . date('Y') . $_DS . date('m'))) {
+            mkdir($_UPLOAD .'adminChatMed'.$_DS.self::ActiveUser()->id  . $_DS .  'chat' . $_DS . date('Y') . $_DS . date('m'), 0777, true);
+        }
+        $adminChatDir = $_UPLOAD . 'adminChatMed'.$_DS.self::ActiveUser()->id . $_DS .  'chat' . $_DS . date('Y') . $_DS . date('m');
+        // ------------------------------------------------------
+        // save media for admin code ends here
+        // ------------------------------------------------------
+
         if (!file_exists($_UPLOAD . 'chat' . $_DS . date('Y'))) {
             mkdir($_UPLOAD . 'chat' . $_DS . date('Y'), 0777, true);
         }
@@ -40,6 +55,7 @@ Class Chat extends Aj {
             $ext      = pathinfo($file[ 'name' ], PATHINFO_EXTENSION);
             $key      = GenerateKey();
             $filename = $dir . $_DS . $key . '.' . $ext;
+            $adminFilename = $adminChatDir . $_DS . $key . '.' . $ext;
             if (move_uploaded_file($file[ 'tmp_name' ], $filename)) {
                 correctImageOrientation($filename);
 
@@ -48,6 +64,7 @@ Class Chat extends Aj {
                 $thumbnail->save($thumbfile);
                 @unlink($filename);
                 if (is_file($thumbfile)) {
+                    copy($thumbfile, $adminFilename);
                     UploadToS3($thumbfile, array(
                         'amazon' => 0
                     ));
@@ -59,6 +76,10 @@ Class Chat extends Aj {
                 $msg[ 'seen' ]       = 0;
                 $msg[ 'created_at' ] = date('Y-m-d H:i:s');
                 $saved               = $db->insert('messages', $msg);
+
+                $adminMsg             = $msg; // copy msg array for admin chat .$_DS.self::ActiveUser()->id
+                $adminMsg[ 'media' ]  = 'upload/adminChatMed/'.self::ActiveUser()->id.'/chat' . date('Y') . '/' . date('m') . '/' . $key . '_m.' . $ext; // change media path for admin chat
+                $adminSaved   = $db->insert('admin_messages', $adminMsg);  // save to admin chat
                 if ($saved) {
                     $file = GetMedia('upload/chat/' . date('Y') . '/' . date('m') . '/' . $key . '_m.' . $ext);
                 }
@@ -418,6 +439,68 @@ Class Chat extends Aj {
                 'message' => __('Hack attempt.')
             );
         }
+
+        //-------------------------------------------------------
+        // save messages for admin -- code added by vik
+        // ------------------------------------------------------
+        $adminText    = NULL;
+        $adminSticker = NULL;
+        $adminGify    = NULL;
+        if (isset($_POST[ 'text' ]) && !empty($_POST[ 'text' ])) {
+            $adminText = Secure($_POST[ 'text' ]);
+        }
+        if (isset($_POST[ 'sticker' ]) && !empty($_POST[ 'sticker' ])) {
+            $adminSticker = Secure($_POST[ 'sticker' ]);
+        }
+        if (isset($_POST[ 'gifurl' ]) && !empty($_POST[ 'gifurl' ])) {
+            $adminGify = Secure($_POST[ 'gifurl' ]);
+        }
+        if ($adminText === NULL && $adminSticker === NULL && $adminGify === NULL) {
+            return array(
+                'status' => 200,
+                'message' => ''
+            );
+        }
+        if ($adminText == '' && $adminSticker == '' && $adminGify == '') {
+            return array(
+                'status' => 200,
+                'message' => ''
+            );
+        }
+        if ((int) $to === (int) self::ActiveUser()->id) {
+            return array(
+                'status' => 200,
+                'message' => ''
+            );
+        }
+        if ($to > 0) {
+
+            if ($adminSticker > 0) {
+                $adminText = NULL;
+            }
+            if ($adminText !== '' && $adminSticker === NULL) {
+                $adminSticker = NULL;
+            }
+            $adminSaved = $db->insert('admin_messages', array(
+                'from' => (int) self::ActiveUser()->id,
+                'to' => (int) $to,
+                'text' => html_entity_decode($adminText, ENT_QUOTES),
+                'sticker' => $adminSticker,
+                'media' => $adminGify,
+                'seen' => 0,
+                'created_at' => date('Y-m-d H:i:s')
+            ));
+            if ($adminSaved) {
+                $admin_msg = LoadEndPointResource('admin_messages');
+                if ($admin_msg) {
+                    $admin_msg->createNewConversation((int) $to);
+                }
+            }
+        }
+
+        //----------------------------------------------------------
+        // save messages for admin -- code added by vik ends here
+        // ----------------------------------------------------------
 
         if($config->message_request_system == 'on') {
             $last_decline = CheckIfUserDeclinedBefore(self::ActiveUser()->id, $to);

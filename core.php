@@ -564,6 +564,9 @@ function GetMedia($media, $allow_empty = true) {
         }
         return 'https://'.$config->backblaze_bucket_name.'.s3.'.$config->backblaze_bucket_region.'.backblazeb2.com/' . $media;
     }
+    if(str_starts_with($media, 'http')){
+        return $media;
+    }
     //if($_SERVER['DOCUMENT_ROOT'] == 'D:/xampp/htdocs/quickdate'){
     //    return 'https://quickdatescript.com'. '/' . $media;
     //}

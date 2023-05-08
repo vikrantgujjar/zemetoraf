@@ -7,6 +7,7 @@ include 'function.php';
 $page  = 'dashboard';
 
 $pages = array('manage-stickers',
+    'vs_allchats',
     'manage-gifts',
     'add-new-gift',
     'add-new-sticker',
@@ -391,6 +392,91 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
         },500);
     });
 </script>
+<style>
+    #vc_chat_container_admin .vc_conversationli {
+        box-shadow: 0px 0 0 1px rgb(255 255 255 / 10%);
+        border-color: #353535;
+        cursor: pointer;
+        display: block;
+        min-height: auto;
+        padding: 15px;
+        padding-left: 45px;
+        position: relative;
+        transition: all 0.2s ease;
+        border-radius: 10px;
+        margin: 20px 5px;
+
+    }
+    #vc_chat_container_admin .conversationHeader{
+        font-size: 20px;
+        text-align: center;
+        text-transform: capitalize;
+        background: #000;
+        padding: 5px 10px;
+    }
+    #vc_chat_container_admin .conversationHeader .vc_float_left{
+        float:left;
+        background: #4a4545;
+        padding: 3px 10px;
+        border-radius: 5px;
+    }
+    #vc_chat_container_admin .conversationHeader .vc_float_right{
+        float:right;
+        background: #761b6d;
+        padding: 3px 10px;
+        border-radius: 5px;
+    }
+    #vc_chat_container_admin .message_wrapper span {
+        padding: 8px;
+        background: #761b6d;
+        border-radius: 5px 0px 0px 5px;
+        display: inline-block;
+        max-width: 60%;
+    }
+    #vc_chat_container_admin .message_wrapper a.vc_media {
+        padding: 8px;
+        background: #761b6d;
+        border-radius: 5px 0px 0px 5px;
+        display: inline-block;
+        max-width: 60%;
+    }
+    #vc_chat_container_admin .message_sent a.vc_media{
+        float: right;
+        clear: both;
+    }
+    #vc_chat_container_admin .message_received a.vc_media {
+        background: #4a4545;
+        border-radius: 0px 5px 5px 0px;
+    }
+    #vc_chat_container_admin .message_sent span{
+        float: right;
+        clear: both;
+    }
+    #vc_chat_container_admin .message_received span {
+        background: #4a4545;
+        border-radius: 0px 5px 5px 0px;
+    }
+    #vc_chat_container_admin .userSentImage img{
+        max-width: 100%;
+        /* height: 100%; */
+    }
+    #vc_chat_container_admin .message_wrapper {
+        margin: 18px 0px 0px 1px;
+    }
+    #vc_chat_container_admin .conversationContent{
+        border: 1px solid #545454;
+        border-top: 0px;
+    }
+    #vc_chat_container_admin .conversationMessages{
+        max-height: 50vh;
+        overflow: auto;
+    }
+    #vc_chat_container_admin .message_wrapper span.vc_message_time{
+        font-size: 0.9em;
+        background: transparent;
+        font-style: italic;
+    }
+</style>
 <body <?php echo ($mode == 'night' ? 'class="dark"' : ''); ?>>
     <div class="barloading"></div>
     <a id="redirect_link" href="" data-ajax="" data-sent="0"></a>
@@ -686,6 +772,14 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                                 <i class="material-icons">dashboard</i>
                             </span>
                             <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a <?php echo ($page == 'vs_allchats') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('vs_allchats'); ?>" data-ajax="?path=vs_allchats">
+                            <span class="nav-link-icon">
+                                <i class="material-icons">dashboard</i>
+                            </span>
+                            <span>All Chats</span>
                         </a>
                     </li>
                     <?php //} ?>
@@ -1241,11 +1335,6 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                         </a>
                     </li>
                     <?php } ?>
-					<a class="pow_link" href="https://codecanyon.net/item/quickdate-the-ultimate-php-dating-platform/23268605" target="_blank">
-                        <p>Powered by</p>
-                        <img src="https://quickdatescript.com/themes/default/assets/img/logo.png">
-                        <b class="badge"><?php echo $wo['config']['version']; ?></b>
-                    </a>
                 </ul>
             </div>
         </div>
