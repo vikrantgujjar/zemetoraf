@@ -817,11 +817,6 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                                 <a <?php echo ($page == 'site-settings') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('site-settings'); ?>" data-ajax="?path=site-settings">Website Information</a>
                             </li>
                             <?php } ?>
-                            <?php if($is_admin == true || CheckRadioPermission($current_user_id, "site-features")){ ?>
-                            <li>
-                                <a <?php echo ($page == 'site-features') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('site-features'); ?>" data-ajax="?path=site-features">Manage Site Features</a>
-                            </li>
-                            <?php } ?>
                             <?php if($is_admin == true || CheckRadioPermission($current_user_id, "email-settings")){ ?>
                             <li>
                                 <a <?php echo ($page == 'email-settings') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('email-settings'); ?>" data-ajax="?path=email-settings">E-mail & SMS Settings</a>
@@ -1062,38 +1057,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                     </li>
                     <?php }?>
                     
-                    <?php if ($is_admin == true
-                        ||
-                        (
-                            CheckUserPermission($current_user_id, "manage-themes") ||
-                            CheckUserPermission($current_user_id, "change-site-desgin") ||
-                            CheckUserPermission($current_user_id, "custom-design")
-                        )
-                    ) { ?>
-                    <li <?php echo ($page == 'manage-themes' || $page == 'change-site-desgin' || $page == 'custom-design') ? 'class="open"' : ''; ?>>
-                        <a href="javascript:void(0);">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">color_lens</i>
-                            </span>
-                            <span>Design</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "manage-themes")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'manage-themes') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-themes'); ?>" data-ajax="?path=manage-themes">Themes</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "change-site-desgin")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'change-site-desgin') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('change-site-desgin'); ?>" data-ajax="?path=change-site-desgin">Change Site Design</a>
-                            </li>
-                            <?php } ?>
-                            <!--<li <?php echo ($page == 'custom-design') ? 'class="active"' : ''; ?>>
-                                <a href="<?php echo Wo_LoadAdminLinkSettings('custom-design'); ?>">Custom Design</a>
-                            </li>-->
-                        </ul>
-                    </li>
-                    <?php }?>
+                   
                     <?php if ($is_admin == true
                         ||
                         (

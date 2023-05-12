@@ -34,11 +34,11 @@ $ffmpeg_binary = $wo['config']['ffmpeg_binary'];
                     <h6 class="card-title">General Configuration</h6>
                     <div class="user-settings-alert"></div>
                     <form class="user-settings" method="POST">
-                    	<div class="float-left">
+                    	<div class="float-left" style="display:none">
                             <label for="developer_mode" class="main-label">Developer Mode</label>
                             <br><small class="admin-info">By enabling developer mode, error reporting will be enabled, <br>it's not recommended to enable this mode without the help of a developer,<br> this may occur some issues in your website.</small>
                         </div>
-                        <div class="form-group float-right switcher">
+                        <div class="form-group float-right switcher" style="display:none">
                             <input type="hidden" name="developer_mode" value="0" />
                             <input type="checkbox" name="developer_mode" id="chck-developer_mode" value="1" <?php echo ($wo['config']['developer_mode'] == 1) ? 'checked': '';?>>
                             <label for="chck-developer_mode" class="check-trail"><span class="check-handler"></span></label>
@@ -189,7 +189,7 @@ $ffmpeg_binary = $wo['config']['ffmpeg_binary'];
 							<div class="clearfix"></div>
 							<hr>
 						</div>
-							<div>
+							<div style="display:none">
 								<div class="float-left">
 									<label for="invite_links_system" class="main-label">User Invite System</label>
 									<br><small class="admin-info">Allow users to invite other users to your site.</small>
