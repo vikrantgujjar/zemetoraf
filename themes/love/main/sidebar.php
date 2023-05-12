@@ -9,10 +9,7 @@
 			</div>
 			<span>
 				<h3><a href="<?php echo $site_url;?>/@<?php echo $profile->username;?>" data-ajax="/@<?php echo $profile->username;?>"><?php echo $profile->full_name.$profile->pro_icon;?></a></h3>
-				<p><a href="<?php echo $site_url;?>/popularity" data-ajax="/popularity"><?php echo __( 'Popularity' );?>: <b><?php echo GetUserPopularity($profile->id);?></b></a></p>
-				<div>
-					<a href="<?php echo $site_url;?>/popularity" data-ajax="/popularity" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" /></svg> <?php echo __( 'Increase' );?> <?php echo __( 'Popularity' );?></a>
-				</div>
+				
 			</span>
 		</div>
 	</div>
@@ -56,11 +53,6 @@
 			</li>
 		<?php } ?>
 		<li class="divider" tabindex="-1"></li>
-		<li>
-            <a href="<?php echo $site_url;?>/gifts" data-ajax="/gifts" class="<?php if($data['name'] == 'gifts'){ echo 'active';}?>">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10H2V4.003C2 3.449 2.455 3 2.992 3h18.016A.99.99 0 0 1 22 4.003V10h-1v10.001a.996.996 0 0 1-.993.999H3.993A.996.996 0 0 1 3 20.001V10zm16 0H5v9h14v-9zM4 5v3h16V5H4zm5 7h6v2H9v-2z"></path></svg> <?php echo __( 'Gifts' );?>
-			</a>
-        </li>
 		<li>
 			<a href="<?php echo $site_url;?>/likes" data-ajax="/likes" class="<?php if($data['name'] == 'likes'){ echo 'active';}?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228zm6.826 1.641c-1.5-1.502-3.92-1.563-5.49-.153l-1.335 1.198-1.336-1.197c-1.575-1.412-3.99-1.35-5.494.154-1.49 1.49-1.565 3.875-.192 5.451L12 18.654l7.02-7.03c1.374-1.577 1.299-3.959-.193-5.454z" /></svg> <?php echo __( 'Likes' );?>

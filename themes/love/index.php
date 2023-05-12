@@ -328,7 +328,6 @@
 							</div>
 							<div class="col s6">
 								<div><a href="<?php echo $site_url;?>/faqs" data-ajax="/faqs"><?php echo __( 'Frequently Asked Questions' );?></a></div>
-								<div><a href="<?php echo $site_url;?>/refund" data-ajax="/refund"><?php echo __( 'refund' );?></a></div>
 								<div><a href="<?php echo $site_url;?>/blog" data-ajax="/blog"><?php echo __( 'Blog' );?></a></div>
 							</div>
 						</div>

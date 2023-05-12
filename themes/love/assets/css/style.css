@@ -1191,7 +1191,7 @@ color: #433E42;
 .dt_ltst_users .card-image > .btn {
 	width: 48px;
     height: 48px;
-    background: #FCCBF7 0% 0% no-repeat padding-box;
+    background: #03ff77 0% 0% no-repeat padding-box;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 16%);
     border: 1px solid #59CE8F;
     border-radius: 50%;
@@ -1305,7 +1305,7 @@ color: #312F31;
 }
 .dt_tstm_usr .swiper-pagination .swiper-pagination-bullet-active {
 	border-color: #59CE8F;
-    background: #FCCBF7;
+    background: #03ff77;
 }
 
 /*Get Started*/
@@ -1529,13 +1529,13 @@ color: #433E42;margin: 0 0 30px;}
 	background: #146C94;
 }
 .dt_login_footer .btn:disabled {
-	background: #ff6bbc !important;
+	background: #146C94 !important;
     color: #fff !important;
     opacity: 0.6;
 }
 .dt_login_footer > a {
 	font: normal normal normal 18px/32px Montserrat;
-    color: #FCCBF7;
+    color: #03ff77;
     margin: 0 !important;
 	transition: all 0.2s;
 }
@@ -1556,7 +1556,7 @@ color: #433E42;margin: 0 0 30px;}
 .dt_login form.register .terms_check [type="checkbox"]+span:not(.lever):before {border-width: 2px;left: 3px;top: 10px;}
 .dt_login form.register .terms_check [type="checkbox"]+span:not(.lever):after {height: 16px;width: 16px;border: 2px solid #969696;top: 5px;}
 .dt_login form.register .terms_check [type="checkbox"].filled-in:checked+span:not(.lever):before {left: 0.5px;top: 4px;width: 6px;height: 10px;}
-.dt_login form.register .terms_check [type="checkbox"].filled-in:checked+span:not(.lever):after {width: 16px;height: 16px;border: 2px solid #a33596;background-color: #a33596;}
+.dt_login form.register .terms_check [type="checkbox"].filled-in:checked+span:not(.lever):after {width: 16px;height: 16px;border: 2px solid #f44336;background-color: #f44336;}
 .dt_login form > hr {margin: 25px 0;}
 .dt_login form .alert {margin-bottom: 45px;}
 .dt_login_footer a{margin-left:auto;}
@@ -1613,7 +1613,7 @@ color: #433E42;margin: 0 0 30px;}
 	    content: '';
     width: 52px;
     height: 11px;
-    background: #FCCBF7;
+    background: #03ff77;
     display: block;
     position: absolute;
     left: -20px;
@@ -1635,7 +1635,7 @@ color: #433E42;margin: 0 0 30px;}
 .dt_contact svg.contct_svg {width: 300px;height: 300px;}
 
 /*Register Steps*/
-.dt_signup_steps {background: linear-gradient(0deg, #BD39B2 0%, #9A2299 100%);margin: 60px auto 20px;padding: 10px 20px;box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);border-radius: 6px;overflow: hidden;width: 718.07px;position: relative;color: #fff;}
+.dt_signup_steps {background: linear-gradient(0deg, #59CE8F 0%, #59CE8F 100%);margin: 60px auto 20px;padding: 10px 20px;box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);border-radius: 6px;overflow: hidden;width: 718.07px;position: relative;color: #fff;}
 .dt_signup_steps:before {
 	    content: '';
     background-image: url(../img/login-lines.png);
@@ -1672,7 +1672,7 @@ body .dt_signup_steps h5.empty_state {
     padding: 30px 25px;
     position: relative;
     font: normal normal normal 16px/19px Montserrat;
-    color: #FCCBF7;
+    color: #03ff77;
 }
 .steps_header_steps li div:before {
 	content: '';
@@ -1692,7 +1692,7 @@ body .dt_signup_steps h5.empty_state {
     bottom: -12px;
     height: 0;
     width: 0;
-    border-bottom: 14px solid #881e85;
+    border-bottom: 14px solid #03ff77;
     border-left: 14px solid transparent;
     border-right: 14px solid transparent;
     opacity: 0;
@@ -1743,7 +1743,7 @@ body .dt_signup_steps h5.empty_state {
 .slider-form .step_footer p {
 	font: normal normal normal 16px/32px Montserrat;
 margin: 0;
-color: #FCCBF7;
+color: #03ff77;
 }
 
 .slider-form .step_footer .btn {
@@ -1783,7 +1783,7 @@ color: #FCCBF7;
 }
 .choose_photo p, .webcam_photo_verification p {margin-top:0;
 font: normal normal normal 16px/32px Montserrat;
-color: #FCCBF7;
+color: #03ff77;
 }
 .dt_selct_avatar{width: 186px;display: table;height: 186px;overflow: hidden;background: #fff;margin: auto;position: relative;cursor: pointer;border-radius: 12px;border: 4px solid;}
 .dt_selct_avatar span {vertical-align: middle;display: table-cell;text-align: center;}
@@ -1792,11 +1792,11 @@ color: #FCCBF7;
     border-radius: 10px;
     padding: 10px;}
 .btn-image {
-	border: 1px solid #FCCBF7;
+	border: 1px solid #03ff77;
     border-radius: 15px;
     height: 33px;
     background: transparent !important;
-    color: #FCCBF7;
+    color: #03ff77;
     min-width: 155px;
     margin-top: 18px;
     font: normal normal normal 15px/29px Montserrat;
@@ -2069,7 +2069,7 @@ color: #FCCBF7;
 .dt_intrst_chip {
 	margin: 5px;
     height: auto;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     background: transparent;
     font: normal normal normal 16px/37px Montserrat;
     letter-spacing: 0px;
@@ -2112,7 +2112,7 @@ color: #FCCBF7;
     border-radius: 2em;
     text-transform: none;
     letter-spacing: 0;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     background: transparent;
     color: #D04FC1;
     height: 33px;
@@ -2164,7 +2164,7 @@ color: #FCCBF7;
 .dt_user_social ul li a {
 	    display: flex;
     color: #6B696B;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     width: 38px;
     height: 38px;
     align-items: center;
@@ -2935,7 +2935,7 @@ input[type=range]::-moz-range-thumb {
 .dt_msg_box.open_list .msg_container .m_filters .switch .lever:before, body .dt_msg_box.open_list .msg_container .chat_filter .lever:before, .dt_msg_box.open_chat .msg_container .m_filters .switch .lever:before, body .dt_msg_box.open_chat .msg_container .chat_filter .lever:before {
 	width: calc(50% - 8px);
     left: 4px;
-    background: #FCCBF7;
+    background: #03ff77;
     top: 4px;
     height: 29px;
     border-radius: 2em;    transform: none;
@@ -2964,7 +2964,7 @@ input[type=range]::-moz-range-thumb {
 	    width: calc(50% - 8px);
     right: 4px;
     left: auto;
-    background: #FCCBF7;
+    background: #03ff77;
     top: 4px;
     height: 29px;
     border-radius: 2em;    transform: none;
@@ -3174,7 +3174,7 @@ body .dt_msg_box.open_list .msg_container .chat_filter input[type=checkbox]:chec
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--received .message {float: left;background-color: #E9E7E9;border-bottom-left-radius: 5px;border-top-left-radius: 5px;}
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--received .message:first-child {border-top-left-radius: 16px;}
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--received .message:last-child {border-bottom-left-radius: 16px;}
-.dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--sent .message {float: right;background-color: #FCCBF7;border-bottom-right-radius: 5px;border-top-right-radius: 5px;}
+.dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--sent .message {float: right;background-color: #03ff77;border-bottom-right-radius: 5px;border-top-right-radius: 5px;}
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--sent .message:first-child {border-top-right-radius: 16px;}
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages--sent .message:last-child {border-bottom-right-radius: 16px;}
 .dt_msg_box .modal-content .chat_conversations .chat_container .chat_body .chat_body_content .messages .message.sticker {padding: 4px;background: transparent;}
@@ -3880,7 +3880,7 @@ height: 69px;    margin-right: 15px;
 }
 .switch input[type=checkbox]:checked+.round_check {
 	box-shadow: 0px 3px 6px rgb(134 22 139 / 34%);
-    border-color: #BF2EAF;color: #ff6bbc;background: #FCCBF7
+    border-color: #BF2EAF;color: #ff6bbc;background: #03ff77
 }
 .switch input[type=checkbox]:checked+.round_check .circle {
 	background: #ff6bbc
@@ -3905,7 +3905,7 @@ height: 69px;    margin-right: 15px;
 .alert-info {background-color: #e0f1ff;color: #2196F3;border-color: #5eb8ff;}
 .alert-success {background-color: #e7f3e7;color: #4CAF50;border-color: #91cf91;}
 .alert-warning {background-color: #fff4dd;color: #f39440;border-color: #ebc063;}
-.alert-danger {background-color: #ffd9d6;color: #F44336;border-color: #F44336;}
+.alert-danger {background-color: #fff;color: #f44336;border-color: #f44336;}
 .alert_not_matched {
 	margin: 60px 0 -30px;
 }
@@ -4669,7 +4669,7 @@ border: 1px solid #59CE8F;
 }
 .article_of_the_day > h3:before {
         content: '';
-    background: #FCCBF7;
+    background: #03ff77;
     display: block;
     position: absolute;
     left: -10px;
@@ -4799,7 +4799,7 @@ color: #FFFFFF;
 }
 .qd_blog_lists .qd_blog_list_info h5:before {
 	content: '';
-    background: #FCCBF7;
+    background: #03ff77;
     display: block;
     position: absolute;
     left: -9px;
@@ -4826,7 +4826,7 @@ color: #FFFFFF;
 	margin: 0 -4px;
 }
 .topic_match_for_you_cats.side a {
-	border: 1px solid #FCCBF7;margin: 4px;
+	border: 1px solid #03ff77;margin: 4px;
 }
 .topic_match_for_you_cats.side a:hover {
 	border-color: #59CE8F;
@@ -4872,7 +4872,7 @@ color: #FFFFFF;
     bottom: 10px;
     left: 10px;
     box-shadow: 0px 3px 20px rgb(204 66 189 / 10%);
-    border: 6px solid #FCCBF7;
+    border: 6px solid #03ff77;
     border-radius: 15px;
     z-index: 1;
 }
@@ -4924,7 +4924,7 @@ color: #FFFFFF;
     text-align: center;
     border-radius: 2em;
     margin: 0 2px 5px;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     font: normal normal normal 16px/37px Montserrat;
     letter-spacing: 0px;
     color: #59CE8F;transition: all 0.2s;
@@ -4937,7 +4937,7 @@ color: #FFFFFF;
 .qd_read_blog_share li {display: inline-block;}
 .qd_read_blog_share li a {
 	display: block;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     border-radius: 2em;
     padding: 0 9.5px;
     line-height: 36px;
@@ -5149,7 +5149,7 @@ color: #FFFFFF;
 	margin: 0;
     width: 38px;
     pointer-events: auto;
-    border: 1px solid #FCCBF7;
+    border: 1px solid #03ff77;
     border-radius: 21px;
     padding: 4px;
 }
@@ -5211,7 +5211,7 @@ color: #FFFFFF;
 .qd_sett_sessions .first > span {
 	width: 53px;
     height: 53px;
-    background: #FCCBF7;
+    background: #03ff77;
     border-radius: 50%;
 	display: inline-flex;
     align-items: center;
@@ -5250,7 +5250,7 @@ color: #FFFFFF;
 	    box-shadow: 0px 3px 6px rgb(134 22 139 / 34%);
     border-color: #BF2EAF;
     color: #ff6bbc;
-    background: #FCCBF7;
+    background: #03ff77;
 }
 .info_select_radio_btn > label > input:checked ~ .sr_btn_lab_innr .round_check .circle {
     background: #ff6bbc;

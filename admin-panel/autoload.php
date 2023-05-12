@@ -948,27 +948,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                                 </li>
                             <?php }?>
 
-                            <?php if($is_admin == true || CheckRadioPermission($current_user_id, "affiliates-settings") || CheckRadioPermission($current_user_id, "payment-requests")){ ?>
-                                <li>
-                                    <a <?php echo ($page == 'affiliates-settings' || $page == 'payment-requests' || $page == 'referrals-list') ? 'class="open"' : ''; ?> href="javascript:void(0);">Affiliates System</a>
-                                    <ul class="ml-menu">
-                                        <?php if($is_admin == true || CheckRadioPermission($current_user_id, "affiliates-settings")){ ?>
-                                        <li>
-                                            <a <?php echo ($page == 'affiliates-settings') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('affiliates-settings'); ?>" data-ajax="?path=affiliates-settings">
-                                                <span>Affiliates Settings</span>
-                                            </a>
-                                        </li>
-                                        <?php }?>
-                                        <?php if($is_admin == true || CheckRadioPermission($current_user_id, "payment-requests")){ ?>
-                                        <li>
-                                            <a <?php echo ($page == 'payment-requests' || $page == 'referrals-list') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('payment-requests'); ?>" data-ajax="?path=payment-requests">
-                                                <span>Payment Requests</span>
-                                            </a>
-                                        </li>
-                                        <?php }?>
-                                    </ul>
-                                </li>
-                            <?php } ?>
+                            
 
                         </ul>
                     </li>
@@ -989,34 +969,9 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                             <span class="nav-link-icon">
                                 <i class="material-icons">money</i>
                             </span>
-                            <span>Payments & Ads</span>
+                            <span>Manage Ads</span>
                         </a>
                         <ul class="ml-menu">
-							<?php if($is_admin == true || CheckRadioPermission($current_user_id, "payment-settings")){ ?>
-                            <li>
-                                <a <?php echo ($page == 'payment-settings') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('payment-settings'); ?>" data-ajax="?path=payment-settings">Payment Configuration</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "payments")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'payments') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('payments'); ?>" data-ajax="?path=payments">Payments</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "manage-payments")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'manage-payments') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-payments'); ?>" data-ajax="?path=manage-payments">Manage Payments</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "manage-currencies")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'manage-currencies') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-currencies'); ?>" data-ajax="?path=manage-currencies">Manage Currencies</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "bank-receipts")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'bank-receipts') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('bank-receipts'); ?>" data-ajax="?path=bank-receipts">Manage bank receipts</a>
-                            </li>
-                            <?php } ?>
 							<?php if ($is_admin == true || CheckUserPermission($current_user_id, "manage-website-ads") ) { ?>
                             <li>
                                 <a <?php echo ($page == 'manage-website-ads') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-website-ads'); ?>" data-ajax="?path=manage-website-ads">Manage Website Ads</a>
@@ -1106,36 +1061,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                         </ul>
                     </li>
                     <?php }?>
-                    <?php if ($is_admin == true
-                        ||
-                        (
-                            CheckUserPermission($current_user_id, "manage-gifts") ||
-                            CheckUserPermission($current_user_id, "add-new-gift")
-                        )
-                    ) { ?>
-                    <li <?php echo ($page == 'manage-gifts' || $page == 'add-new-gift' ) ? 'class="open"' : ''; ?>>
-                        <a href="javascript:void(0);">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">perm_media</i>
-                            </span>
-                            <span>Gifts</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "manage-gifts")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'manage-gifts') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-gifts'); ?>" data-ajax="?path=manage-gifts">Manage gifts</a>
-                            </li>
-                            <?php } ?>
-                            <?php if ($is_admin == true || CheckUserPermission($current_user_id, "add-new-gift")) { ?>
-                            <li>
-                                <a <?php echo ($page == 'add-new-gift') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('add-new-gift'); ?>" data-ajax="?path=add-new-gift">
-                                    Add New Gift
-                                </a>
-                            </li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                    <?php }?>
+                    
                     <?php if ($is_admin == true
                         ||
                         (

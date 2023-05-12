@@ -37,25 +37,6 @@
                         <?php } ?>
                     </ul>
                     <ul class="right">
-						<li class="credit">
-							<?php if ( isGenderFree($profile->gender) === true ) {?>
-								<a href="javascript:void(0);">
-							<?php }else{ ?>
-								<a href="<?php echo $site_url;?>/credit" data-ajax="/credit">
-							<?php } ?>
-								
-								<div class="how_credtss">
-									<span><?php echo __( 'Credit' );?></span>&nbsp;&nbsp;
-									<svg xmlns="http://www.w3.org/2000/svg" width="13.658" height="15.175" viewBox="0 0 13.658 15.175"> <path id="Path_5894" data-name="Path 5894" d="M3367.018,4985.622h8.347a.759.759,0,0,0,0-1.518h-6.07a3.793,3.793,0,1,1,0-7.587h1.518V4975h3.035v1.518h3.793v3.035h-8.346a.759.759,0,0,0,0,1.518h6.07a3.793,3.793,0,1,1,0,7.587h-1.518v1.518h-3.035v-1.518h-3.794Z" transform="translate(-3365.5 -4975)" fill="#D21312"/> </svg> <span id="credit_amount"><?php
-													if( isGenderFree($profile->gender) === true ){
-														echo __('Free');
-													}else{
-														echo number_format((int)$profile->balance);
-													}
-												 ?></span>
-								</div>
-							</a>
-						</li>
                         <li class="header_msg">
                             <a href="javascript:void(0);" id="messenger_opener" class="btn-flat">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="14" y2="13"></line></svg>
@@ -87,25 +68,7 @@
                             </ul>
                         </li>
                         <li class="header_user">
-							<div class="boost-div">
-								<?php
-									$boost_duration = 0;
-									if( $profile->boosted_time > 0 ) {
-										$boost_duration = ( time() - $profile->boosted_time ) / 60;
-									}else{
-										$boost_duration = $config->boost_expire_time;
-									}
-									$boost_duration = $config->boost_expire_time - $boost_duration;
-								?>
-								<?php if( $profile->is_boosted == '1' && $boost_duration <= $config->boost_expire_time ){?>
-									<div class="boosted_message_expire" data-message-expire="<button title='<?php echo __('Boost me!');?>' id='boost_btn' class='btn boost-me'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 493.944 493.944'><path fill='currentColor' d='M367.468,175.996c-3.368-5.469-9.317-8.807-15.734-8.807h-84.958l45.919-143.098  c1.797-5.614,0.816-11.76-2.662-16.521c-3.464-4.748-9.014-7.57-14.9-7.57h-84.446c-8.02,0-15.125,5.18-17.563,12.814  l-68.487,213.465c-1.797,5.613-0.817,11.756,2.663,16.52c3.464,4.748,9.013,7.57,14.899,7.57h14.868h68.183l-22.006,235.037  c-0.352,3.736,2.004,7.185,5.614,8.227c3.593,1.045,7.427-0.608,9.126-3.961L368.19,194.01  C371.093,188.281,370.82,181.467,367.468,175.996z' /></svg></button>">
-										<span class="global_boosted_time" data-show="no" data-boosted-time="<?php echo $boost_duration;?>"></span>
-										<button title='<?php echo __('Your boost will expire in');?> <?php echo __('minutes');?>' class='btn boost-running'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 493.944 493.944"><path fill="currentColor" d="M367.468,175.996c-3.368-5.469-9.317-8.807-15.734-8.807h-84.958l45.919-143.098  c1.797-5.614,0.816-11.76-2.662-16.521c-3.464-4.748-9.014-7.57-14.9-7.57h-84.446c-8.02,0-15.125,5.18-17.563,12.814  l-68.487,213.465c-1.797,5.613-0.817,11.756,2.663,16.52c3.464,4.748,9.013,7.57,14.899,7.57h14.868h68.183l-22.006,235.037  c-0.352,3.736,2.004,7.185,5.614,8.227c3.593,1.045,7.427-0.608,9.126-3.961L368.19,194.01  C371.093,188.281,370.82,181.467,367.468,175.996z" /></svg></button>
-									</div>
-								<?php }else if( $profile->is_boosted == '0' || ( $profile->is_boosted == '1' && $boost_duration > $config->boost_expire_time ) ){ ?>
-									<button title='<?php echo __('Boost me!');?>' id='boost_btn' class='btn boost-me'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 493.944 493.944"><path fill="currentColor" d="M367.468,175.996c-3.368-5.469-9.317-8.807-15.734-8.807h-84.958l45.919-143.098  c1.797-5.614,0.816-11.76-2.662-16.521c-3.464-4.748-9.014-7.57-14.9-7.57h-84.446c-8.02,0-15.125,5.18-17.563,12.814  l-68.487,213.465c-1.797,5.613-0.817,11.756,2.663,16.52c3.464,4.748,9.013,7.57,14.899,7.57h14.868h68.183l-22.006,235.037  c-0.352,3.736,2.004,7.185,5.614,8.227c3.593,1.045,7.427-0.608,9.126-3.961L368.19,194.01  C371.093,188.281,370.82,181.467,367.468,175.996z" /></svg></button>
-								<?php } ?>
-							</div>
+							
 							
                             <a href="javascript:void(0);" data-target="user_dropdown" class="dropdown-trigger btn-flat">
                                 <img src="<?php echo $profile->avater->avater;?>" alt="<?php echo $profile->full_name;?>" /> <span><?php echo __( 'Hi,' );?> <?php echo $profile->first_name;?></span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
@@ -164,9 +127,6 @@
 								<li class="divider" tabindex="-1"></li>
 								<li>
                                     <a href="<?php echo $site_url;?>/settings/<?php echo $profile->username;?>" data-ajax="/settings/<?php echo $profile->username;?>" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2.213 14.06a9.945 9.945 0 0 1 0-4.12c1.11.13 2.08-.237 2.396-1.001.317-.765-.108-1.71-.986-2.403a9.945 9.945 0 0 1 2.913-2.913c.692.877 1.638 1.303 2.403.986.765-.317 1.132-1.286 1.001-2.396a9.945 9.945 0 0 1 4.12 0c-.13 1.11.237 2.08 1.001 2.396.765.317 1.71-.108 2.403-.986a9.945 9.945 0 0 1 2.913 2.913c-.877.692-1.303 1.638-.986 2.403.317.765 1.286 1.132 2.396 1.001a9.945 9.945 0 0 1 0 4.12c-1.11-.13-2.08.237-2.396 1.001-.317.765.108 1.71.986 2.403a9.945 9.945 0 0 1-2.913 2.913c-.692-.877-1.638-1.303-2.403-.986-.765.317-1.132 1.286-1.001 2.396a9.945 9.945 0 0 1-4.12 0c.13-1.11-.237-2.08-1.001-2.396-.765-.317-1.71.108-2.403.986a9.945 9.945 0 0 1-2.913-2.913c.877-.692 1.303-1.638.986-2.403-.317-.765-1.286-1.132-2.396-1.001zM4 12.21c1.1.305 2.007 1.002 2.457 2.086.449 1.085.3 2.22-.262 3.212.096.102.195.201.297.297.993-.562 2.127-.71 3.212-.262 1.084.45 1.781 1.357 2.086 2.457.14.004.28.004.42 0 .305-1.1 1.002-2.007 2.086-2.457 1.085-.449 2.22-.3 3.212.262.102-.096.201-.195.297-.297-.562-.993-.71-2.127-.262-3.212.45-1.084 1.357-1.781 2.457-2.086.004-.14.004-.28 0-.42-1.1-.305-2.007-1.002-2.457-2.086-.449-1.085-.3-2.22.262-3.212a7.935 7.935 0 0 0-.297-.297c-.993.562-2.127.71-3.212.262C13.212 6.007 12.515 5.1 12.21 4a7.935 7.935 0 0 0-.42 0c-.305 1.1-1.002 2.007-2.086 2.457-1.085.449-2.22.3-3.212-.262-.102.096-.201.195-.297.297.562.993.71 2.127.262 3.212C6.007 10.788 5.1 11.485 4 11.79c-.004.14-.004.28 0 .42zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg> <?php echo __( 'Settings' );?></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $site_url;?>/transactions" data-ajax="/transactions" class="waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.375 15.103A8.001 8.001 0 0 0 8.03 5.053l-.992-1.737A9.996 9.996 0 0 1 17 3.34c4.49 2.592 6.21 8.142 4.117 12.77l1.342.774-4.165 2.214-.165-4.714 1.246.719zM4.625 8.897a8.001 8.001 0 0 0 11.345 10.05l.992 1.737A9.996 9.996 0 0 1 7 20.66C2.51 18.068.79 12.518 2.883 7.89L1.54 7.117l4.165-2.214.165 4.714-1.246-.719zM8.5 14H14a.5.5 0 1 0 0-1h-4a2.5 2.5 0 1 1 0-5h1V7h2v1h2.5v2H10a.5.5 0 1 0 0 1h4a2.5 2.5 0 1 1 0 5h-1v1h-2v-1H8.5v-2z" /></svg> <?php echo __( 'Transactions' );?></a>
                                 </li>
                                 <?php if( $profile->admin == 1 || $profile->permission !== '' ){ ?>
 								<li class="divider" tabindex="-1"></li>

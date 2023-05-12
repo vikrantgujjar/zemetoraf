@@ -84,24 +84,11 @@
 							<?php } ?>
 						<?php } ?>
 					</h2>
-					<p><?php echo __( 'Popularity' );?>: <b><?php echo GetUserPopularity($profile->id);?></b></p>
+					
 				</div>
 				
 				<div class="dt_user_pro_info">
-                    <ul>
-                        <li>
-                            <a href="<?php echo $site_url;?>/popularity" data-ajax="/popularity">
-                                <?php echo __( 'Increase' );?> <?php echo __( 'Popularity' );?>
-                            </a>
-                        </li>
-                        <?php if( $profile->is_pro == 0 && $config->pro_system == 1 && isGenderFree($profile->gender) === false ){?>
-							<li>
-								<a href="<?php echo $site_url;?>/pro" data-ajax="/pro" class="prem">
-									<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 19h20v2H2v-2zM2 5l5 3.5L12 2l5 6.5L22 5v12H2V5zm2 3.841V15h16V8.841l-3.42 2.394L12 5.28l-4.58 5.955L4 8.84z" fill="currentColor"/></svg></span> <?php echo __( 'go_premium' );?>
-								</a>
-							</li>
-                        <?php } ?>
-                    </ul>
+                    
                 </div>
 				
 				<div class="home_usr_stats">

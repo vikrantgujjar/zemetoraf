@@ -85,7 +85,7 @@ if($matched_count[0]['cnt'] == 2){
 							<?php } ?>
 						<?php } ?>
 					</h2>
-					<p><?php echo __( 'Popularity' );?>: <b><?php echo GetUserPopularity($profile->id);?></b></p>
+					
 				</div>
 				<?php if(!empty($user) ) {?>
 					<div class="dt_usr_opts_mnu">
@@ -117,11 +117,6 @@ if($matched_count[0]['cnt'] == 2){
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M14 22.5L11.2 19H6a1 1 0 0 1-1-1V7.103a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1h-5.2L14 22.5zm1.839-5.5H21V8.103H7V17H12.161L14 19.298 15.839 17zM2 2h17v2H3v11H1V3a1 1 0 0 1 1-1z"/></svg>
 						</a>
 						<?php }?>
-						<?php //if(isGenderFree($user->gender) === true ){?>
-							<a href="javascript:void(0);" class="blue_bg tooltipped" data-ajax-post="/profile/open_gift_model" data-ajax-params="" data-ajax-callback="callback_open_gift_model" data-position="bottom" data-tooltip="<?php echo __( 'Send a gift' );?>">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="currentColor" d="M3 10H2V4.003C2 3.449 2.455 3 2.992 3h18.016A.99.99 0 0 1 22 4.003V10h-1v10.001a.996.996 0 0 1-.993.999H3.993A.996.996 0 0 1 3 20.001V10zm16 0H5v9h14v-9zM4 5v3h16V5H4zm5 7h6v2H9v-2z"/></svg>
-							</a>
-						<?php //}?>
 						<?php if (auth()->admin == '1' || $profile->admin !== '1') { ?>
 						
 						<a href="javascript:void(0);" data-target="user_prof_dropdown" class="dropdown-trigger">
