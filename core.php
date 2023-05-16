@@ -41,7 +41,7 @@ function LoadConfig() {
     return $config;
 }
 $config = LoadConfig();
-if ($config->developer_mode == 1) {
+if ($config->developer_mode == 1 || 1) {
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
