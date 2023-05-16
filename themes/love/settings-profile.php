@@ -225,39 +225,6 @@ if($target_user !== ''){
 					</div>
 					<br>
 					<div class="dt_settings_bg_wrap sett_prof_cont">
-						<!--Personality-->
-						<h5><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M1.5,4V5.5C1.5,9.65 3.71,13.28 7,15.3V20H22V18C22,15.34 16.67,14 14,14C14,14 13.83,14 13.75,14C9,14 5,10 5,5.5V4M14,4A4,4 0 0,0 10,8A4,4 0 0,0 14,12A4,4 0 0,0 18,8A4,4 0 0,0 14,4Z"></path></svg> <?php echo __('Personality');?></h5>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="character" name="character">
-									<?php echo DatasetGetSelect( $user->character, "character", __("Character") );?>
-								</select>
-								<label for="character"><?php echo __( 'Character' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="children" name="children">
-									<?php echo DatasetGetSelect( $user->children, "children", __("Children") );?>
-								</select>
-								<label for="children"><?php echo __( 'Children' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="friends" name="friends">
-									<?php echo DatasetGetSelect( $user->friends, "friends", __("Friends") );?>
-								</select>
-								<label for="friends"><?php echo __( 'Friends' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="pets" name="pets">
-									<?php echo DatasetGetSelect( $user->pets, "pets", __("Pets") );?>
-								</select>
-								<label for="pets"><?php echo __( 'Pets' );?></label>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="dt_settings_bg_wrap sett_prof_cont">
 						<!--Lifestyle-->
 						<h5><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M15,18.54C17.13,18.21 19.5,18 22,18V22H5C5,21.35 8.2,19.86 13,18.9V12.4C12.16,12.65 11.45,13.21 11,13.95C10.39,12.93 9.27,12.25 8,12.25C6.73,12.25 5.61,12.93 5,13.95C5.03,10.37 8.5,7.43 13,7.04V7A1,1 0 0,1 14,6A1,1 0 0,1 15,7V7.04C19.5,7.43 22.96,10.37 23,13.95C22.39,12.93 21.27,12.25 20,12.25C18.73,12.25 17.61,12.93 17,13.95C16.55,13.21 15.84,12.65 15,12.39V18.54M7,2A5,5 0 0,1 2,7V2H7Z"></path></svg> <?php echo __('Lifestyle');?></h5>
 						<div class="row">
@@ -302,63 +269,13 @@ if($target_user !== ''){
 								<label for="travel"><?php echo __( 'Travel' );?></label>
 							</div>
 						</div>
-					</div>
-					<br>
-					<div class="dt_settings_bg_wrap sett_prof_cont">
-						<!--Favourites-->
-						<h5><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z"></path></svg> <?php echo __('Favourites');?></h5>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<input id="music" type="text" class="validate" name="music" value="<?php echo $user->music;?>">
-								<label for="music"><?php echo __( 'Music Genre' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<input id="dish" type="text" class="validate" name="dish" value="<?php echo $user->dish;?>">
-								<label for="dish"><?php echo __( 'Dish' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<input id="song" type="text" class="validate" name="song" value="<?php echo $user->song;?>">
-								<label for="song"><?php echo __( 'Song' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<input id="hobby" type="text" class="validate" name="hobby" value="<?php echo $user->hobby;?>">
-								<label for="hobby"><?php echo __( 'Hobby' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<input id="sport" type="text" class="validate" name="sport" value="<?php echo $user->sport;?>">
-								<label for="sport"><?php echo __( 'Sport' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<input id="tv" type="text" class="validate" name="tv" value="<?php echo $user->tv;?>">
-								<label for="tv"><?php echo __( 'TV Show' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<input id="book" type="text" class="validate" name="book" value="<?php echo $user->book;?>">
-								<label for="book"><?php echo __( 'Book' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<input id="movie" type="text" class="validate" name="movie" value="<?php echo $user->movie;?>">
-								<label for="movie"><?php echo __( 'Movie' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<input id="colour" type="text" class="validate" name="colour" value="<?php echo $user->colour;?>">
-								<label for="colour"><?php echo __( 'Color' );?></label>
-							</div>
-						</div>
-						<div class="dt_sett_footer valign-wrapper">
-							<button class="btn btn-large waves-effect waves-light bold btn_primary btn_round" type="submit" name="action"><span><?php echo __( 'Save' );?></span> <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="currentColor" d="M18.6 6.9v-.5l-6-6c-.3-.3-.9-.3-1.2 0-.3.3-.3.9 0 1.2l5 5H1c-.5 0-.9.4-.9.9s.4.8.9.8h14.4l-4 4.1c-.3.3-.3.9 0 1.2.2.2.4.2.6.2.2 0 .4-.1.6-.2l5.2-5.2h.2c.5 0 .8-.4.8-.8 0-.3 0-.5-.2-.7z"></path></svg></button>
-						</div>
-						<?php if( $admin_mode == true ){?>
-							<input type="hidden" name="targetuid" value="<?php echo strrev( str_replace( '==', '', base64_encode($user->id) ) );?>">
-						<?php }?>
+						 
+						 <div class="dt_sett_footer valign-wrapper">
+							 <button class="btn btn-large waves-effect waves-light bold btn_primary btn_round" type="submit" name="action"><span><?php echo __( 'Save' );?></span> <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="currentColor" d="M18.6 6.9v-.5l-6-6c-.3-.3-.9-.3-1.2 0-.3.3-.3.9 0 1.2l5 5H1c-.5 0-.9.4-.9.9s.4.8.9.8h14.4l-4 4.1c-.3.3-.3.9 0 1.2.2.2.4.2.6.2.2 0 .4-.1.6-.2l5.2-5.2h.2c.5 0 .8-.4.8-.8 0-.3 0-.5-.2-.7z"></path></svg></button>
+						 </div>
+						 <?php if( $admin_mode == true ){?>
+							 <input type="hidden" name="targetuid" value="<?php echo strrev( str_replace( '==', '', base64_encode($user->id) ) );?>">
+						 <?php }?>
 					</div>
 				</form>
 			</div>

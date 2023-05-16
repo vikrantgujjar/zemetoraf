@@ -142,7 +142,7 @@ $_gender_text = '';
 							<div class="row r_margin">
 								<div class="input-field col s6 no_margin_top">
 									<select class="_age_from">
-										<?php for($i = 18 ; $i < 51 ; $i++ ){
+										<?php for($i = 13 ; $i < 64 ; $i++ ){
 											$selected = '';
 											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_from']) && $data['find_match_data']['age_from'] == $i) {
 												$selected = 'selected';
@@ -154,16 +154,21 @@ $_gender_text = '';
 								</div>
 								<div class="input-field col s6 no_margin_top">
 									<select class="_age_to">
-										<?php for($i = 51 ; $i < 99 ; $i++ ){
+										<?php for($i = 13 ; $i <= 65 ; $i++ ){
 											$selected = '';
 											if (!empty($data['find_match_data']) && !empty($data['find_match_data']['age_to']) && $data['find_match_data']['age_to'] == $i) {
 												$selected = 'selected';
 											}
-											else if(empty($data['find_match_data']['age_to']) && $i == 98){
+											else if( (empty($data['find_match_data']['age_to']) || $data['find_match_data']['age_to']== 98)  && $i == 65){
 												$selected = 'selected';
 											}
+											if($i==65){
 											?>
-											<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
+												<option value="98" <?php echo $selected; ?> ><?php echo $i;?> + </option>
+
+											<?php }else{ ?>
+												<option value="<?php echo $i;?>" <?php echo $selected; ?> ><?php echo $i;?></option>
+											<?php }?>
 										<?php }?>
 									</select>
 								</div>
@@ -290,36 +295,7 @@ $_gender_text = '';
 								</select>
 							</div>
 						</div>
-						<div class="col s12 m4">
-							<h5><?php echo __('Ethnicity');?></h5>
-							<?php
-								$ethnicity = Dataset::load('ethnicity');
-								if (isset($ethnicity) && !empty($ethnicity)) {
-									foreach ($ethnicity as $key => $val) {
-										$selected = '';
-										if (!empty($data['find_match_data']) && !empty($data['find_match_data']['ethnicity']) && in_array($key, $data['find_match_data']['ethnicity'])) {
-											$selected = 'checked';
-										}
-										echo '<p class="col s6"><label><input type="checkbox" class="_ethnicity filled-in" value="' . $key . '" data-txt="' . $val . '" '.$selected.'/><span>' . $val . '</span></label></p>';
-									}
-								}
-							?>
-						</div>
-						<div class="col s12 m4">
-							<h5><?php echo __('Religion');?></h5>
-							<?php
-								$religion = Dataset::load('religion');
-								if (isset($religion) && !empty($religion)) {
-									foreach ($religion as $key => $val) {
-										$selected = '';
-										if (!empty($data['find_match_data']) && !empty($data['find_match_data']['religion']) && in_array($key, $data['find_match_data']['religion'])) {
-											$selected = 'checked';
-										}
-										echo '<p class="col s6"><label><input type="checkbox" class="_religion filled-in" value="' . $key . '" data-txt="' . $val . '" '.$selected.'/><span>' . $val . '</span></label></p>';
-									}
-								}
-							?>
-						</div>
+						
 					</div>
 					<div class="btn_wrapper">
 						<button class="btn waves-effect btn_glossy btn-flat btn-large waves-light btn-find-matches-search" id="btn_search_background" type="button" disabled><?php echo __('Search your match');?></button>
@@ -398,36 +374,7 @@ $_gender_text = '';
 								</script>
 							</div>
 						</div>
-						<div class="col s12 m5">
-							<h5><?php echo __('Education');?></h5>
-							<?php
-								$education = Dataset::load('education');
-								if (isset($education) && !empty($education)) {
-									foreach ($education as $key => $val) {
-										$selected = '';
-										if (!empty($data['find_match_data']) && !empty($data['find_match_data']['education']) && in_array($key, $data['find_match_data']['education'])) {
-											$selected = 'checked';
-										}
-										echo '<p class="col s6"><label><input type="checkbox" name="education" class="_education filled-in" value="' . $key . '" data-txt="' . $val . '" '.$selected.'/><span>' . $val . '</span></label></p>';
-									}
-								}
-							?>
-						</div>
-						<div class="col s12 m3">
-							<h5><?php echo __('Pets');?></h5>
-							<?php
-								$pets = Dataset::load('pets');
-								if (isset($pets) && !empty($pets)) {
-									foreach ($pets as $key => $val) {
-										$selected = '';
-										if (!empty($data['find_match_data']) && !empty($data['find_match_data']['pets']) && in_array($key, $data['find_match_data']['pets'])) {
-											$selected = 'checked';
-										}
-										echo '<p class="col s6 m12"><label><input type="checkbox" name="pets" class="_pets filled-in" value="' . $key . '" data-txt="' . $val . '" '.$selected.'/><span>' . $val . '</span></label></p>';
-									}
-								}
-							?>
-						</div>
+						
 					</div>
 
 

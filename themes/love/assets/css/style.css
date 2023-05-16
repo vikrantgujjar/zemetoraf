@@ -6413,3 +6413,11 @@ ul:not(.browser-default) {transition: none !important;transform: none !important
 .btn-floating.btn-large {
     background: #F9D923 !important;
 }
+g#Circle_Effect_Banner {
+    display: none;
+}
+
+.dt_login:before {
+    content: '';
+    background-image: url();
+}

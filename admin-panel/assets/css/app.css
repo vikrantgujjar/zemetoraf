@@ -10615,3 +10615,36 @@ body.dark .tube_faq .accordion-item .accordion-panel p {
 	width: 100px;
 	height: auto;
 }
+
+
+#vc_alluserlogin_content_wrapper .valign-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#vc_alluserlogin_content_wrapper .qd_sett_sessions {
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(0 0 0 / 8%);
+  padding: 20px 0;
+  flex-wrap: wrap;
+}
+#vc_alluserlogin_content_wrapper .qd_sett_sessions:first-child {
+  padding-top: 0;
+}
+#vc_alluserlogin_content_wrapper .qd_sett_sessions .first > span {
+  width: 53px;
+  height: 53px;
+  background: #03ff77;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#vc_alluserlogin_content_wrapper  div.qd_sett_sessions>div {
+  flex: 0 0 25%;
+}

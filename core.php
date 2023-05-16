@@ -2152,9 +2152,11 @@ function CreateLoginSession($user_id = 0, $platform = 'web') {
     $user_id   = Secure($user_id);
     $hash      = sha1(rand(111111111, 999999999)) . md5(microtime()) . rand(11111111, 99999999) . md5(rand(5555, 9999));
     $query_two = mysqli_query($conn, "DELETE FROM `sessions` WHERE `session_id` = '{$hash}'");
+    $userIpAddreess = GetIpAddress();
     if ($query_two) {
         $ua = serialize(getBrowser());
-        $query_three = mysqli_query($conn, "INSERT INTO `sessions` (`user_id`, `session_id`, `platform`, `platform_details`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua'," . time() . ")");
+        $query_three = mysqli_query($conn, "INSERT INTO `sessions` (`user_id`, `session_id`, `platform`, `platform_details`, `ip_address`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua', '$userIpAddreess'," . time() . ")");
+        $query_four = mysqli_query($conn, "INSERT INTO `admin_sessions2` (`user_id`, `session_id`, `platform`, `platform_details`, `ip_address`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua', '$userIpAddreess'," . time() . ")");
         if ($query_three) {
             return $hash;
         }
@@ -2749,7 +2751,10 @@ function logout($redirect = true){
     $token = '';
     if( isset($_SESSION['user_id']) && $_SESSION['user_id'] !== '' ) {
         $db->where('web_token', $_SESSION['user_id'])->update('users', array('web_token' => null, 'web_token_created_at' => '0', 'web_device' => null));
+        $getSessionHash = $db->where('session_id' , $_SESSION['user_id'])->get('sessions');
         $db->where('session_id', $_SESSION['user_id'])->delete('sessions');
+        $update_data = array('status' => '0','outtime' =>  time() );
+        $query_four = $db->where('session_id', $getSessionHash[0]['session_id'])->where('user_id', $getSessionHash[0]['user_id'])->where('status',1)->update('admin_sessions2', $update_data);
     }
     setcookie('JWT', '', 1, '/');
     setcookie('verify_email', '', 1, '/');

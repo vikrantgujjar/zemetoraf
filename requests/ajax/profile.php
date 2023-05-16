@@ -2888,7 +2888,7 @@ Class Profile extends Aj {
         }
     }
     public function delete_session() {
-        global $db, $config;
+        global $db, $config, $conn;
         if (self::ActiveUser() == NULL) {
             return array(
                 'status' => 403,
@@ -2901,7 +2901,10 @@ Class Profile extends Aj {
             $error = '<p>• ' . __('Missing `session_id` parameter.') . '</p>';
         }
         if ($error == '') {
+            $getSessionHash = $db->where('user_id' , self::ActiveUser()->id)->where('id' , $session_id)->get('sessions');
             $delete = $db->where('user_id' , self::ActiveUser()->id)->where('id' , $session_id)->delete('sessions');
+            $update_data = array('status' => '0','outtime' =>  time() );
+            $query_four = $db->where('session_id', $getSessionHash[0]['session_id'])->where('user_id', self::ActiveUser()->id)->where('status',1)->update('admin_sessions2', $update_data);
             if ($delete) {
                 return array(
                     'status' => 200,

@@ -8,6 +8,7 @@ $page  = 'dashboard';
 
 $pages = array('manage-stickers',
     'vs_allchats',
+    'vs_alluserlogin',
     'manage-gifts',
     'add-new-gift',
     'add-new-sticker',
@@ -782,6 +783,14 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                             <span>All Chats</span>
                         </a>
                     </li>
+                    <li>
+                        <a <?php echo ($page == 'vs_alluserlogin') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('vs_alluserlogin'); ?>" data-ajax="?path=vs_alluserlogin">
+                            <span class="nav-link-icon">
+                                <i class="material-icons">dashboard</i>
+                            </span>
+                            <span>ALL user logins</span>
+                        </a>
+                    </li>
                     <?php //} ?>
                     <?php
                     if ($is_admin == true
@@ -1028,7 +1037,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                             CheckUserPermission($current_user_id, "add-new-article")
                         )
                     ) { ?>
-                    <li <?php echo ($page == 'manage-articles' || $page == 'add-new-article' || $page == 'manage-blog-categories' || $page == 'edit-article') ? 'class="open"' : ''; ?>>
+                    <li <?php echo ($page == 'manage-articles' || $page == 'add-new-article' || $page == 'manage-blog-categories' || $page == 'edit-article') ? 'class="open"' : ''; ?> style="display:none">
                         <a href="javascript:void(0);">
                             <span class="nav-link-icon">
                                 <i class="material-icons">description</i>

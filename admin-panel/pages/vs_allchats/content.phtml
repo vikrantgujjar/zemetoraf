@@ -169,7 +169,6 @@ function chat_convList_refreshFunction(a, b) {
 
     var url = '?path=vs_allchats_ajax';
     $.post(Wo_Ajax_Requests_File_load() + url, {url:url,ref:selectActiveUser.val(),type:'load'}, function (data) {
-        debugger
         json_data = JSON.parse($(data).filter('#json-data').val());
         $('#vc_chat_content_wrapper').html(data);
         $('#vc_chat_title').html('Conversations');
@@ -190,7 +189,6 @@ function updateConversation(conveId, e){
 
     var url = '?path=vs_allchats_ajax';
     $.post(Wo_Ajax_Requests_File_load() + url, {url:url,ref:selectActiveUser.val(),type:'load',conversation_id:conveId}, function (data) {
-        debugger
         json_data = JSON.parse($(data).filter('#json-data').val());
         $('#vc_chat_content_wrapper').html(data);
         $('#vc_chat_title').html('Conversations');
