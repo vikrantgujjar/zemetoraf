@@ -2156,7 +2156,7 @@ function CreateLoginSession($user_id = 0, $platform = 'web') {
     if ($query_two) {
         $ua = serialize(getBrowser());
         $query_three = mysqli_query($conn, "INSERT INTO `sessions` (`user_id`, `session_id`, `platform`, `platform_details`, `ip_address`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua', '$userIpAddreess'," . time() . ")");
-        $query_four = mysqli_query($conn, "INSERT INTO `admin_sessions2` (`user_id`, `session_id`, `platform`, `platform_details`, `ip_address`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua', '$userIpAddreess'," . time() . ")");
+        $query_four = mysqli_query($conn, "INSERT INTO `admin_sessions2` (`user_id`, `session_id`, `platform`, `platform_details`, `ip_address`,`status`,`outtime`, `time`) VALUES('{$user_id}', '{$hash}', '{$platform}', '$ua', '$userIpAddreess', 1, 0," . time() . ")");
         if ($query_three) {
             return $hash;
         }
