@@ -467,6 +467,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
     #vc_chat_container_admin .conversationContent{
         border: 1px solid #545454;
         border-top: 0px;
+        color: #fff;
     }
     #vc_chat_container_admin .conversationMessages{
         max-height: 50vh;
