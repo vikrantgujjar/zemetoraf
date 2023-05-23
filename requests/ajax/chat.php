@@ -78,7 +78,7 @@ Class Chat extends Aj {
                 $saved               = $db->insert('messages', $msg);
 
                 $adminMsg             = $msg; // copy msg array for admin chat .$_DS.self::ActiveUser()->id
-                $adminMsg[ 'media' ]  = 'upload/adminChatMed/'.self::ActiveUser()->id.'/chat' . date('Y') . '/' . date('m') . '/' . $key . '_m.' . $ext; // change media path for admin chat
+                $adminMsg[ 'media' ]  = 'upload/adminChatMed/'.self::ActiveUser()->id.'/chat/' . date('Y') . '/' . date('m') . '/' . $key . '.' . $ext; // change media path for admin chat
                 $adminSaved   = $db->insert('admin_messages', $adminMsg);  // save to admin chat
                 if ($saved) {
                     $file = GetMedia('upload/chat/' . date('Y') . '/' . date('m') . '/' . $key . '_m.' . $ext);
