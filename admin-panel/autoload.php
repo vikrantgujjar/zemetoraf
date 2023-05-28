@@ -937,11 +937,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                                 <a <?php echo ($page == 'manage-profile-fields' || $page == 'add-new-profile-field' || $page == 'edit-profile-field') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-profile-fields'); ?>" data-ajax="?path=manage-profile-fields">Manage Custom Profile Fields</a>
                             </li>
                             <?php }?>
-                            <?php if($is_admin == true || CheckRadioPermission($current_user_id, "manage-success-stories")){ ?>
-                            <li>
-                                <a <?php echo ($page == 'manage-success-stories' || $page == 'add-success-stories' || $page == 'edit-success-stories') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-success-stories'); ?>" data-ajax="?path=manage-success-stories">Manage Success Stories</a>
-                            </li>
-                            <?php }?>
+                            
                             <?php if($is_admin == true || CheckRadioPermission($current_user_id, "manage-user-verification")){ ?>
                             <!-- <li>
                                 <a <?php echo ($page == 'manage-user-verification') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('manage-user-verification'); ?>" data-ajax="?path=manage-user-verification">Manage Verification</a>

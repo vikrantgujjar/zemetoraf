@@ -6421,3 +6421,7 @@ g#Circle_Effect_Banner {
     content: '';
     background-image: url();
 }
+
+.dt_header_how_works_side_innr .list > div p{
+    color: #fff;
+}
