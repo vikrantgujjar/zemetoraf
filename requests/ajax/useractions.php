@@ -53,6 +53,9 @@ Class UserActions extends Aj {
                 if (Wo_IsBanned($email)) {
                     $error .= '<p>• ' . __('The email address is blacklisted and not allowed, please choose another email.') . '</p>';
                 }
+                if (Wo_custom_IsBannedIPranges(GetIpAddress())) {
+                    $error .= '<p>• The IP address is blacklisted and not allowed.</p>';
+                }
                 if (preg_match_all('~@(.*?)(.*)~', $email, $matches) && !empty($matches[2]) && !empty($matches[2][0]) && Wo_IsBanned($matches[2][0])) {
                     $error .= '<p>• ' . __('The email provider is blacklisted and not allowed, please choose another email provider.') . '</p>';
                 }

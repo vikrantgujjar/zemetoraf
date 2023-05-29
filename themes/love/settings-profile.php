@@ -225,50 +225,8 @@ if($target_user !== ''){
 					</div>
 					<br>
 					<div class="dt_settings_bg_wrap sett_prof_cont">
-						<!--Lifestyle-->
-						<h5><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M15,18.54C17.13,18.21 19.5,18 22,18V22H5C5,21.35 8.2,19.86 13,18.9V12.4C12.16,12.65 11.45,13.21 11,13.95C10.39,12.93 9.27,12.25 8,12.25C6.73,12.25 5.61,12.93 5,13.95C5.03,10.37 8.5,7.43 13,7.04V7A1,1 0 0,1 14,6A1,1 0 0,1 15,7V7.04C19.5,7.43 22.96,10.37 23,13.95C22.39,12.93 21.27,12.25 20,12.25C18.73,12.25 17.61,12.93 17,13.95C16.55,13.21 15.84,12.65 15,12.39V18.54M7,2A5,5 0 0,1 2,7V2H7Z"></path></svg> <?php echo __('Lifestyle');?></h5>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="live_with" name="live_with">
-									<?php echo DatasetGetSelect( $user->live_with, "live_with", __("Live with") );?>
-								</select>
-								<label for="live_with"><?php echo __( 'I live with' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="car" name="car">
-									<?php echo DatasetGetSelect( $user->car, "car", __("Car") );?>
-								</select>
-								<label for="car"><?php echo __( 'Car' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="religion" name="religion">
-									<?php echo DatasetGetSelect( $user->religion, "religion", __("Religion") );?>
-								</select>
-								<label for="religion"><?php echo __( 'Religion' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="smoke" name="smoke">
-									<?php echo DatasetGetSelect( $user->smoke, "smoke", __("Smoke") );?>
-								</select>
-								<label for="smoke"><?php echo __( 'Smoke' );?></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s6 xs12">
-								<select id="drink" name="drink">
-									<?php echo DatasetGetSelect( $user->drink, "drink", __("Drink") );?>
-								</select>
-								<label for="drink"><?php echo __( 'Drink' );?></label>
-							</div>
-							<div class="input-field col s6 xs12">
-								<select id="travel" name="travel">
-									<?php echo DatasetGetSelect( $user->travel, "travel", __("Travel") );?>
-								</select>
-								<label for="travel"><?php echo __( 'Travel' );?></label>
-							</div>
-						</div>
+						
+						
 						 
 						 <div class="dt_sett_footer valign-wrapper">
 							 <button class="btn btn-large waves-effect waves-light bold btn_primary btn_round" type="submit" name="action"><span><?php echo __( 'Save' );?></span> <svg viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="currentColor" d="M18.6 6.9v-.5l-6-6c-.3-.3-.9-.3-1.2 0-.3.3-.3.9 0 1.2l5 5H1c-.5 0-.9.4-.9.9s.4.8.9.8h14.4l-4 4.1c-.3.3-.3.9 0 1.2.2.2.4.2.6.2.2 0 .4-.1.6-.2l5.2-5.2h.2c.5 0 .8-.4.8-.8 0-.3 0-.5-.2-.7z"></path></svg></button>

@@ -1213,24 +1213,7 @@ if (!empty($_COOKIE['mode']) && $_COOKIE['mode'] == 'night') {
                             <span>System Status</span>
                         </a>
                     </li>
-                    <?php if ($is_admin == true || CheckUserPermission($current_user_id, "changelog")) { ?>
-                    <li>
-                        <a <?php echo ($page == 'changelog') ? 'class="active"' : ''; ?> href="<?php echo Wo_LoadAdminLinkSettings('changelog'); ?>" data-ajax="?path=changelog">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">update</i>
-                            </span>
-                            <span>Changelogs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://docs.quickdatescript.com/#faq" target="_blank">
-                            <span class="nav-link-icon">
-                                <i class="material-icons">more_vert</i>
-                            </span>
-                            <span>FAQs</span>
-                        </a>
-                    </li>
-                    <?php } ?>
+                   
                 </ul>
             </div>
         </div>

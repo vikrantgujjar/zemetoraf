@@ -5750,7 +5750,7 @@ function validate_ip($ip) {
 }
 function ip_in_range($ip, $range) {
     if (strpos($range, '/') == false) {
-        $range .= '/32';
+        return false;
     }
     // $range is in IP/CIDR format eg 127.0.0.1/24
     list($range, $netmask) = explode('/', $range, 2);
@@ -5944,6 +5944,7 @@ function Wo_UpdateBalance($user_id = 0, $balance = 0, $type = '+') {
     }
     return false;
 }
+
 function Wo_GetBanned($type = '') {
     global $conn;
     $data  = array();
@@ -5959,6 +5960,20 @@ function Wo_GetBanned($type = '') {
     }
     return $data;
 }
+function Wo_custom_IsBannedIPranges($ip_value) {
+    global $conn;
+    $data  = array();
+    $query = mysqli_query($conn, "SELECT * FROM `banned_ip` ORDER BY id DESC");
+    
+    while ($fetched_data = mysqli_fetch_assoc($query)) {
+        if ( strpos( $fetched_data['ip_address'] , '/' ) != false ) {
+            if(ip_in_range($ip_value, $fetched_data['ip_address'])){
+                return true;
+            }
+        }
+    }
+    return false;
+}
 function Wo_IsBanned($value = '') {
     global $conn;
     $value           = Secure($value);
@@ -5967,6 +5982,7 @@ function Wo_IsBanned($value = '') {
     if ($fetched_data['count'] > 0) {
         return true;
     }
+
     return false;
 }
 function Wo_BanNewIp($ip) {
